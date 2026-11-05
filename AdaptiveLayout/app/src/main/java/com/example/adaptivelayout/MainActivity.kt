@@ -19,32 +19,29 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val pane = findViewById<SlidingPaneLayout>(R.id.slidingpane)
+        val title = findViewById<TextView>(R.id.detailTitle)
+        val description = findViewById<TextView>(R.id.detailDescription)
+
+
+        fun showDetails(heading: String, details: String) {
+            title.text = heading
+            description.text = details
+            pane.openPane()
+        }
+
+        findViewById<Button>(R.id.buttonAndroid).setOnClickListener {
+            showDetails("Android", "Android adapts to different screen sizes.")
+        }
+
+        findViewById<Button>(R.id.buttonKotlin).setOnClickListener {
+            showDetails("Kotlin", "Kotlin is used to build Android apps.")
+        }
+
+        findViewById<Button>(R.id.buttonBack).setOnClickListener {
+            pane.closePane()
+        }
     }
-    val pane = findViewById<SlidingPaneLayout>(R.id.slidingpane)
-    val title = findViewById<TextView>(R.id.detailTitle)
-    val description = findViewById<TextView>(R.id.detailDescription)
-
-
-    fun showDetails(heading: String, details: String) {
-        title.text = heading
-        description.text = details
-        pane.openPane()
-    }
-
-    findViewById<Button>(R.id.buttonAndroid).setOnClickListener {
-        showDetails("Android", "Android adapts to different screen sizes.")
-    }
-
-    findViewById<Button>(R.id.buttonKotlin).setOnClickListener {
-        showDetails("Kotlin", "Kotlin is used to build Android apps.")
-    }
-
-    findViewById<Button>(R.id.buttonBack).setOnClickListener {
-        pane.closePane()
-    }
-
-
-
-
 
 }
